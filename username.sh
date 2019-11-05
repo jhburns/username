@@ -10,11 +10,11 @@ echo "- must start with a lower case letter,"
 echo "- contain 3 to 12 characters"
 
 echo "Enter a valid username:"
-read USERNAME
-while echo "$USERNAME" | egrep -v "^[a-z][a-z0-9_]{2,11}$" > /dev/null 2>&1
+read -r USERNAME
+until echo "$USERNAME" | grep -E '^[a-z][a-z0-9_]{2,11}$'
 do
-	echo "You must enter a valid username."
+	echo "Username Invalid"
 	echo "Enter a valid username: "
-	read USERNAME
+	read -r USERNAME
 done
 echo "Thank you"
